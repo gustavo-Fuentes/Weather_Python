@@ -11,15 +11,12 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class UIBase(object):
+class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(300, 400)
+        MainWindow.resize(461, 400)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
-        self.tableView = QtWidgets.QTableView(self.centralwidget)
-        self.tableView.setGeometry(QtCore.QRect(20, 90, 256, 192))
-        self.tableView.setObjectName("tableView")
         self.label = QtWidgets.QLabel(self.centralwidget)
         self.label.setGeometry(QtCore.QRect(20, 10, 101, 16))
         self.label.setObjectName("label")
@@ -29,9 +26,20 @@ class UIBase(object):
         self.btn_buscar = QtWidgets.QPushButton(self.centralwidget)
         self.btn_buscar.setGeometry(QtCore.QRect(150, 40, 80, 24))
         self.btn_buscar.setObjectName("btn_buscar")
+        self.verticalLayoutWidget = QtWidgets.QWidget(self.centralwidget)
+        self.verticalLayoutWidget.setGeometry(QtCore.QRect(20, 90, 421, 251))
+        self.verticalLayoutWidget.setObjectName("verticalLayoutWidget")
+        self.verticalLayout = QtWidgets.QVBoxLayout(self.verticalLayoutWidget)
+        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout.setObjectName("verticalLayout")
+        self.tableWidget = QtWidgets.QTableWidget(self.verticalLayoutWidget)
+        self.tableWidget.setRowCount(7)
+        self.tableWidget.setColumnCount(4)
+        self.tableWidget.setObjectName("tableWidget")
+        self.verticalLayout.addWidget(self.tableWidget)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 300, 21))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 461, 21))
         self.menubar.setObjectName("menubar")
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
@@ -42,7 +50,6 @@ class UIBase(object):
         self.lineEdit.returnPressed.connect(self.btn_buscar.click)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
         MainWindow.setTabOrder(self.lineEdit, self.btn_buscar)
-        MainWindow.setTabOrder(self.btn_buscar, self.tableView)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
