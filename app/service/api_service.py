@@ -16,7 +16,7 @@ class OpenWeatherMap:
             "lon": coord["lon"],
             "exclude": "current,minutely,hourly,alerts",
             "appid": APPID,
-            "lang": "pt",
+            "lang": "pt_br",
             "units": "metric",
         }
         url = self.baseUrl + "onecall"
@@ -26,7 +26,8 @@ class OpenWeatherMap:
     def getLocation(self, city):
         params = {
             "q": city,
-            "appid": APPID
+            "appid": APPID,
+            "lang": "pt_br",
         }
         
         url = self.baseUrl + "weather"
